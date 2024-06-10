@@ -26,7 +26,7 @@ loadVouchers();
 // Validate Voucher
 app.post('/validate', (req, res) => {
     const { code } = req.body;
-    const voucherIndex = vouchers.findIndex(voucher => voucher.code === code && voucher.active === 'true');
+    const voucherIndex = vouchers.findIndex(voucher => voucher.code.toLowerCase() === code.toLowerCase() && voucher.active === 'true');
 
     if (voucherIndex > -1) {
         vouchers[voucherIndex].active = 'false';
